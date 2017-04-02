@@ -4,12 +4,15 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 
 public class RobotView extends View {
 
+    private final int paintColor = Color.BLACK;
+    private Path path;
     private RectF mPieBounds = new RectF();
     private Paint mPiePaint;
 
@@ -26,8 +29,12 @@ public class RobotView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         canvas.drawColor(Color.GREEN);
-        canvas.drawOval(mPieBounds, mPiePaint);
+        canvas.drawRect(mPieBounds,mPiePaint);
 
+        mPiePaint.setColor(Color.WHITE);
+        path.moveTo(130, 180);
+        path.cubicTo(70, 150, 110, 110, 160, 120);
+        canvas.drawPath(path,mPiePaint);
     }
 
     @Override
@@ -48,16 +55,18 @@ public class RobotView extends View {
                 0.0f,
                 diameter,
                 diameter);
-        mPieBounds.offsetTo(getPaddingLeft(), getPaddingTop());
+        //mPieBounds.offsetTo(getPaddingLeft(), getPaddingTop());
 
 
     }
 
     private void init(){
 
+        path = new Path();
         mPiePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        mPiePaint.setStyle(Paint.Style.FILL);
-        mPiePaint.setColor(0xffffff10);
+        mPiePaint.setStyle(Paint.Style.STROKE);
+        mPiePaint.setColor(paintColor);
+        mPiePaint.setStrokeWidth(3);
 
     }
 }
