@@ -1,12 +1,18 @@
 package com.birb.finder;
 
+import android.graphics.Canvas;
 import android.graphics.Path;
+import android.graphics.Region;
 
 public class Shape {
 
-    private Path path;
+    protected Path contour;
+    protected Region touchArea;
 
-    public void create(){
+    public void paint(Canvas canvas){}
 
+    public boolean touchCheck(int x, int y){
+        return touchArea.contains(x,y);
     }
+
 }

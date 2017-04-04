@@ -3,18 +3,15 @@ package com.birb.finder;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Path;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 
 public class RobotView extends View {
 
-    private final int paintColor = Color.BLACK;
-    private Path path;
-    private RectF mPieBounds = new RectF();
-    private Paint mPiePaint;
+    private RectF mBounds = new RectF();
+    private BodyShape shape;
+    private BeakShape beak;
 
     public RobotView(Context context){
         super(context);
@@ -28,13 +25,15 @@ public class RobotView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        canvas.drawColor(Color.GREEN);
-        canvas.drawRect(mPieBounds,mPiePaint);
+        canvas.drawColor(Color.WHITE);
 
-        mPiePaint.setColor(Color.WHITE);
-        path.moveTo(130, 180);
-        path.cubicTo(70, 150, 110, 110, 160, 120);
-        canvas.drawPath(path,mPiePaint);
+        float unitX = mBounds.width()/50;
+        float unitY = mBounds.height()/50;
+
+        shape.setContour(unitX,unitY,0,0);
+        shape.paint(canvas);
+        beak.setContour(unitX,unitY,(int)(unitX*9),(int)(unitY*12.4));
+        beak.paint(canvas);
     }
 
     @Override
@@ -50,23 +49,16 @@ public class RobotView extends View {
 
         float diameter = Math.min(ww, hh);
 
-        mPieBounds = new RectF(
+        mBounds = new RectF(
                 0.0f,
                 0.0f,
                 diameter,
                 diameter);
-        //mPieBounds.offsetTo(getPaddingLeft(), getPaddingTop());
-
-
+        //mBounds.offsetTo(getPaddingLeft(), getPaddingTop());
     }
 
     private void init(){
-
-        path = new Path();
-        mPiePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        mPiePaint.setStyle(Paint.Style.STROKE);
-        mPiePaint.setColor(paintColor);
-        mPiePaint.setStrokeWidth(3);
-
+        shape=new BodyShape();
+        beak=new BeakShape();
     }
 }
