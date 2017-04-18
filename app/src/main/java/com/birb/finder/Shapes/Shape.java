@@ -1,4 +1,4 @@
-package com.birb.finder;
+package com.birb.finder.Shapes;
 
 import android.graphics.Canvas;
 import android.graphics.Path;

@@ -7,6 +7,9 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.birb.finder.Shapes.BeakShape;
+import com.birb.finder.Shapes.BodyShape;
+
 public class RobotView extends View {
 
     private RectF mBounds = new RectF();
@@ -32,7 +35,7 @@ public class RobotView extends View {
 
         shape.setContour(unitX,unitY,0,0);
         shape.paint(canvas);
-        beak.setContour(unitX,unitY,(int)(unitX*9),(int)(unitY*12.4));
+        beak.setContour(unitX,unitY,shape.getBeakConnection());
         beak.paint(canvas);
     }
 
