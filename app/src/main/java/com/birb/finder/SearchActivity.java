@@ -5,11 +5,16 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
+import com.birb.finder.TabFragments.BodyFragment;
+import com.birb.finder.TabFragments.SimpleFragment;
+
 public class SearchActivity extends AppCompatActivity {
 
     private RobotView robotView;
     private TabLayout tabLayout;
     private ViewPager viewPager;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,7 +25,9 @@ public class SearchActivity extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.pager);
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new SimpleFragment(), "Body");
+        BodyFragment fragment = new BodyFragment();
+
+        adapter.addFragment(fragment, "Body");
         adapter.addFragment(new SimpleFragment(), "Beak");
         adapter.addFragment(new SimpleFragment(), "Tail");
 
