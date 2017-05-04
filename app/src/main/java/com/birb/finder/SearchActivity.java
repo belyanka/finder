@@ -10,7 +10,7 @@ import com.birb.finder.TabFragments.BeakFragment;
 import com.birb.finder.TabFragments.BodyFragment;
 import com.birb.finder.TabFragments.SimpleFragment;
 
-public class SearchActivity extends AppCompatActivity implements BeakListener{
+public class SearchActivity extends AppCompatActivity implements BodyDataChangeListener, BeakListener{
 
     private RobotView robotView;
     private TabLayout tabLayout;
@@ -30,6 +30,7 @@ public class SearchActivity extends AppCompatActivity implements BeakListener{
         BodyFragment bodyFragment = new BodyFragment();
         BeakFragment beakFragment = new BeakFragment();
         beakFragment.setListener(this);
+        bodyFragment.setContext(this);
 
         adapter.addFragment(bodyFragment, "Body");
         adapter.addFragment(beakFragment, "Beak");
@@ -38,6 +39,11 @@ public class SearchActivity extends AppCompatActivity implements BeakListener{
 
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
+    }
+
+    @Override
+    public void setBodyType(int type) {
+        Toast.makeText(this,"Choose " + type,Toast.LENGTH_SHORT).show();
     }
 
     @Override

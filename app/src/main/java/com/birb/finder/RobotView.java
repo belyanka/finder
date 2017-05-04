@@ -13,6 +13,7 @@ import com.birb.finder.Shapes.BodyShape;
 public class RobotView extends View {
 
     private RectF mBounds = new RectF();
+    private ShapeShifter shapeShifter;
     private BodyShape shape;
     private BeakShape beak;
 
@@ -63,5 +64,11 @@ public class RobotView extends View {
     private void init(){
         shape=new BodyShape();
         beak=new BeakShape();
+        shapeShifter=new ShapeShifter();
+    }
+
+    public void changeBodyType(int typeId){
+        this.shapeShifter.setBodyType(typeId);
+        this.invalidate();
     }
 }

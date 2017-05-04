@@ -8,13 +8,18 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.Toast;
 
+import com.birb.finder.BodyDataChangeListener;
 import com.birb.finder.R;
 
 public class BodyFragment extends Fragment{
 
-    private String[] cats = { "Васька", "Мурзик", "Барсик", "Рыжик" };
+    private BodyDataChangeListener activityListener;
+    private String[] cats = { "Не знаю","Васька", "Мурзик", "Барсик", "Рыжик" };
+
+    public void setContext(BodyDataChangeListener listener){
+        this.activityListener = listener;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,7 +43,7 @@ public class BodyFragment extends Fragment{
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int pos, long id) {
 
-                Toast.makeText(parent.getContext(),cats[pos],Toast.LENGTH_SHORT).show();
+                activityListener.setBodyType(pos);
             }
         });
         return view;
