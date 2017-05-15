@@ -34,8 +34,11 @@ public class RobotView extends View {
         float unitX = mBounds.width()/50;
         float unitY = mBounds.height()/50;
 
-        shape.setContour(unitX,unitY,0,0);
+
+        shape= this.shapeShifter.loadInitialBody(unitX,unitY,0,0);
         shape.paint(canvas);
+
+        beak=this.shapeShifter.loadInitialBeak();
         beak.setContour(unitX,unitY,shape.getBeakConnection());
         beak.paint(canvas);
     }
@@ -62,9 +65,7 @@ public class RobotView extends View {
     }
 
     private void init(){
-        shape=new BodyShape();
-        beak=new BeakShape();
-        shapeShifter=new ShapeShifter();
+        this.shapeShifter=new ShapeShifter();
     }
 
     public void changeBodyType(int typeId){

@@ -31,4 +31,8 @@ public class BeakShape extends Shape {
                 offsetX+unitX*2.2f,offsetY+unitY*2.1f,offsetX+unitX*3.7f,offsetY+unitY*2.5f);
         this.contour.addCircle(offsetX,offsetY,5, Path.Direction.CCW);
     }
+
+    public void setConnectionPoint(PointF point){
+        this.connectionPoint=point;
+    }
 }
