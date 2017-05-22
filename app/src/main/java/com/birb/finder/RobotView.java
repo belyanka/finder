@@ -29,17 +29,17 @@ public class RobotView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        canvas.drawColor(Color.WHITE);
+        //canvas.drawColor(Color.WHITE);
 
         float unitX = mBounds.width()/50;
         float unitY = mBounds.height()/50;
+        float offsetX = 10*unitX;
+        float offsetY = 5*unitY;
 
-
-        shape= this.shapeShifter.loadInitialBody(unitX,unitY,0,0);
+        shape = this.shapeShifter.getCurrentBodyShape(unitX,unitY,offsetX,offsetY);
         shape.paint(canvas);
 
-        beak=this.shapeShifter.loadInitialBeak();
-        beak.setContour(unitX,unitY,shape.getBeakConnection());
+        beak=this.shapeShifter.getCurrentBeakShape(unitX,unitY,shape.getBeakConnection().x*unitX + offsetX, shape.getBeakConnection().y*unitY + offsetY);
         beak.paint(canvas);
     }
 
@@ -70,6 +70,11 @@ public class RobotView extends View {
 
     public void changeBodyType(int typeId){
         this.shapeShifter.setBodyType(typeId);
+        this.invalidate();
+    }
+
+    public void changeBeakType(int typeId){
+        this.shapeShifter.setBeakType(typeId);
         this.invalidate();
     }
 }

@@ -32,10 +32,10 @@ public class SearchActivity extends AppCompatActivity implements BodyDataChangeL
         beakFragment.setListener(this);
         bodyFragment.setContext(this);
 
-        adapter.addFragment(bodyFragment, "Body");
-        adapter.addFragment(beakFragment, "Beak");
-        adapter.addFragment(new SimpleFragment(), "Tail");
-        adapter.addFragment(new SimpleFragment(), "Legs");
+        adapter.addFragment(bodyFragment, "Тело");
+        adapter.addFragment(beakFragment, "Клюв");
+        adapter.addFragment(new SimpleFragment(), "Хвост");
+        adapter.addFragment(new SimpleFragment(), "Лапы");
 
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
@@ -44,6 +44,7 @@ public class SearchActivity extends AppCompatActivity implements BodyDataChangeL
     @Override
     public void setBodyType(int type) {
         Toast.makeText(this,"Choose " + type,Toast.LENGTH_SHORT).show();
+        this.robotView.changeBodyType(type);
     }
 
     @Override

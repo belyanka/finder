@@ -8,32 +8,75 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="20dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <TextView
-                android:layout_width="wrap_content"
                 android:id="@+id/beakTypeText"
-                android:text="Тип"
-                android:layout_height="wrap_content" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Тип" />
+
             <Spinner
                 android:id="@+id/spinnerBeakType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingStart="5dp">
-            </Spinner>
+                android:paddingStart="5dp"></Spinner>
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/beakLengthText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Длина" />
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radio_red"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:layout_weight="1" />
+
+            <RadioButton
+                android:id="@+id/radio_blue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:layout_weight="1" />
+
+            <RadioButton
+                android:id="@+id/radio_green"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:layout_weight="1" />
+            </RadioGroup>
+        </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="20dp">
         <TextView
+            android:id="@+id/beakColorText"
             android:layout_width="wrap_content"
-            android:id="@+id/beakLengthText"
-            android:text="Длина"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="Цвет" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
