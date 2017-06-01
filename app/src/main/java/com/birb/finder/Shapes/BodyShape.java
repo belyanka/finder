@@ -8,7 +8,8 @@ import android.graphics.PointF;
 
 public class BodyShape extends Shape {
 
-    private PointF beakConnection = new PointF(12f,14f);
+    private PointF beakConnection;
+    private PointF legConnection;
 
     @Override
     public void paint(Canvas canvas){
@@ -34,4 +35,14 @@ public class BodyShape extends Shape {
     public void setBeakConnection(PointF point){
         this.beakConnection=point;
     }
+
+    public PointF getLegConnection() {
+        return legConnection;
+    }
+
+    public void setLegConnection(PointF point){
+        this.legConnection=point;
+    }
+
+
 }

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.birb.finder.TabFragments.BeakFragment;
@@ -15,6 +16,7 @@ public class SearchActivity extends AppCompatActivity implements BodyDataChangeL
     private RobotView robotView;
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    private Button search;
 
 
     @Override
@@ -25,6 +27,7 @@ public class SearchActivity extends AppCompatActivity implements BodyDataChangeL
         robotView = (RobotView) findViewById(R.id.robot);
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         viewPager = (ViewPager) findViewById(R.id.pager);
+        search = (Button) findViewById(R.id.proceed_search);
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         BodyFragment bodyFragment = new BodyFragment();

@@ -9,6 +9,7 @@ import android.view.View;
 
 import com.birb.finder.Shapes.BeakShape;
 import com.birb.finder.Shapes.BodyShape;
+import com.birb.finder.Shapes.LegShape;
 
 public class RobotView extends View {
 
@@ -16,6 +17,7 @@ public class RobotView extends View {
     private ShapeShifter shapeShifter;
     private BodyShape shape;
     private BeakShape beak;
+    private LegShape leg;
 
     public RobotView(Context context){
         super(context);
@@ -29,7 +31,6 @@ public class RobotView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        //canvas.drawColor(Color.WHITE);
 
         float unitX = mBounds.width()/50;
         float unitY = mBounds.height()/50;
@@ -41,6 +42,9 @@ public class RobotView extends View {
 
         beak=this.shapeShifter.getCurrentBeakShape(unitX,unitY,shape.getBeakConnection().x*unitX + offsetX, shape.getBeakConnection().y*unitY + offsetY);
         beak.paint(canvas);
+
+        leg=this.shapeShifter.getCurrentLegShape(unitX,unitY,shape.getBeakConnection().x*unitX + offsetX, shape.getBeakConnection().y*unitY + offsetY);
+        leg.paint(canvas);
     }
 
     @Override
@@ -76,5 +80,9 @@ public class RobotView extends View {
     public void changeBeakType(int typeId){
         this.shapeShifter.setBeakType(typeId);
         this.invalidate();
+    }
+
+    public void changeLegType(int typeId){
+
     }
 }
